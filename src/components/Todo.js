@@ -1,71 +1,59 @@
 import React, { useState } from 'react';
 import logoedit from '../assets/logoreact-01.svg';
+import Wrapper from 'Elements/Wrapper';
+import Button from 'Elements/Button';
 
 const todo = props => {
-       const [todoName, setTodoName] = useState('');
-       const [todoList, setTodoList] = useState([]);
+    //    const [todoName, setTodoName] = useState('');
+    //    const [todoList, setTodoList] = useState([]);
+
+        const [todoState, setTodoState] = useState({userInput: '', todoList: [] });
 
        const inputChangeHandler = event => {
-            setTodoName(event.target.value)
+            setTodoState({
+                userInput: event.target.value,
+                todoList: todoState.todoList});
        };
 
        const todoAddHandler = () => {
-                setTodoList(todoList.concat(todoName));
+               setTodoState({
+                 userInput: todoState.userInput,
+                 todoList: todoState.todoList.concat(todoState.userInput)});
        };
 
     return(
         <React.Fragment>
-            <div style={wrapper}>
+            <Wrapper>
             <img style={logo} src={logoedit} alt="logoedit" />
             <input style={text} 
             type="text" 
             placeholders="Todo"
             onChange={inputChangeHandler}
-            value={todoName} 
+            value={todoState.userInput} 
             />
-            <button 
-            style={btn}
+            <Button
              type="button"
              onClick={todoAddHandler}
-             >Add</button>
+             >Add</Button>
                <ul 
                style={ulStyle}
                >
-            {todoList.map(todo => 
+            {todoState.todoList.map(todo => 
                 <li 
                 style={liStyle}
                 key={todo}
                 >{todo}</li>
               )}
             </ul>
-            </div>
+            </Wrapper>
               
         </React.Fragment>
     );
 };
 
 
-const btn = {
-    backgroundColor: '#5362E4', 
-    width: '10%',
-    color: '#ffffff',
-    cursor: 'pointer',
-    padding: '0.9em',
-    fontSize: '1rem',
-    borderRadius: '0.2rem'
 
-}
 
-const wrapper = {
-    margin: '0 auto',
-    textAlign: 'center',
-    fontSize: '1.rem',
-    marginTop: '2rem',
-    background: 'linear-gradient(-150deg, #00b89e9c 0%, #0152b5 97%), repeat center',
-    width: '70%',
-    padding: '4rem',
-    boxShadow: 'rgba(0, 0, 0, 0.15) -2px 1px 20px 0px'
-}
 
 const text = {
     padding: '0.8em',
