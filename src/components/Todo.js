@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import logoedit from '../assets/logoreact-01.svg';
-import Wrapper from 'Elements/Wrapper';
-import Button from 'Elements/Button';
+import { Button, Footer, Text, Wrapper, Logo, Ul, Li} from './Elements';
 
 const todo = props => {
     //    const [todoName, setTodoName] = useState('');
@@ -24,70 +23,33 @@ const todo = props => {
     return(
         <React.Fragment>
             <Wrapper>
-            <img style={logo} src={logoedit} alt="logoedit" />
-            <input style={text} 
-            type="text" 
+            <Logo src={logoedit} alt="logoedit" />
+            <Text
+            type="text"
             placeholders="Todo"
             onChange={inputChangeHandler}
             value={todoState.userInput} 
             />
-            <Button
+            <Button primary
              type="button"
              onClick={todoAddHandler}
              >Add</Button>
-               <ul 
-               style={ulStyle}
-               >
+               <Ul>
             {todoState.todoList.map(todo => 
-                <li 
-                style={liStyle}
-                key={todo}
-                >{todo}</li>
+                <Li
+                 key={todo}
+                >{todo}</Li>
               )}
-            </ul>
+            </Ul>   
             </Wrapper>
-              
+          
+            <Footer />    
         </React.Fragment>
     );
 };
 
+  
 
-
-
-
-const text = {
-    padding: '0.8em',
-    color: '#555555',
-    width: '60%',
-    fontSize: '1rem'
-}
-
-const logo = {
-    width: '100%',
-    maxWidth: '25%',
-    height: '100%',
-    textAlign: 'center',
-    paddingBottom: '2rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 auto'
-    
-  }
-
-  const ulStyle = {
-      color: '#ffffff',
-      listStyle: 'none'
-
-  }
-
-  const liStyle = {
-        color: '#ffffff',
-        listStyle: 'none',
-        fontWeight: '400',
-        fontSize: '1rem'
-
-
-  }
+ 
 export default todo;
 
