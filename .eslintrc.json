@@ -1,10 +1,12 @@
 {
     "parser": "babel-eslint",
+    "extends": "airbnb",
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
-    "extends": "airnbnb",
+   
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -75,18 +77,6 @@
     "no-await-in-loop": 0,
     "operator-linebreak": 0,
     "no-continue": 0,
-    "no-loop-func": 0,
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
+    "no-loop-func": 0
+     }
 }
